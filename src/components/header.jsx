@@ -3,7 +3,7 @@ import image from '../assets/homeless.jpeg';
 
 export default class Header extends React.Component {
   getStyles() {
-    const headerHeight = '300px'
+    const headerHeight = '400px'
     return {
       header: {
         backgroundImage: `url(${image})`,
