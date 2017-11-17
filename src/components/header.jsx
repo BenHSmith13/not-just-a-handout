@@ -17,7 +17,7 @@ export default class Header extends React.Component {
       },
     }
   }
-  
+
   render() {
     const styles = this.getStyles();
     return (
