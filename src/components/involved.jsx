@@ -2,19 +2,10 @@ import React from 'react';
 import _ from 'lodash';
 
 export default class Involved extends React.Component {
+
+
   getStyles() {
-    // const headerHeight = '400px'
     return {
-      // header: {
-      //   backgroundImage: `url(${image})`,
-      //   height: headerHeight,
-      //   // position: 'absolute',
-      //   top: 0,
-      //   width: '100vw',
-      //   color: 'white',
-      //   lineHeight: headerHeight,
-      //   backgroundAttachment: 'fixed',
-      // },
       padleft: {
         paddingLeft: '80%',
       },
@@ -59,11 +50,13 @@ export default class Involved extends React.Component {
     const foodLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/cityfoodbanks.cgi'
     const shelterLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi'
     return (
-      <div style={styles.padleft}>
-        <h2>How can I get involved?</h2>
-        <ul>
-          {this.showLinks(foodLink, shelterLink)}
-        </ul>
+      <div>
+        <div style={styles.padleft}>
+          <h2>How can I get involved?</h2>
+          <ul>
+            {this.showLinks(foodLink, shelterLink)}
+          </ul>
+        </div>
       </div>
     );
   }
