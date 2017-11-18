@@ -33,7 +33,6 @@ module.exports = class MongoDatabase {
   
   createResource(resource, callback = () => {}){
     MongoClient.connect(url, (err, db) => {
-      console.log(err);
       db.collection('resources').insertOne(resource, callback);
     });
   }

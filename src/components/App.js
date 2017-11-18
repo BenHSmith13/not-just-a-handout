@@ -3,6 +3,7 @@ import Header from './header';
 import Map from './map';
 import './App.css';
 import Involved from './involved';
+import Form from './form';
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
         <Header />
         <Map />
         <Involved location={this.state.location} />
+        <Form />
       </div>
     );
   }

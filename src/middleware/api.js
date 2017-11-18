@@ -9,7 +9,7 @@ const api = store => next => action => {
         return next({ ...action, ...{ type: action.types[1], payload: res } })
       });
     } else if (action.method === 'POST') {
-      axios.post(action.endpoint);
+      axios.post(action.endpoint, { ...action.payload });
     }
   }
   next(action);
