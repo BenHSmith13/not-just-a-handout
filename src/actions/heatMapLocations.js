@@ -5,7 +5,7 @@ export const actionTypes = {
 
 export function getLocations() {
   return {
-    endpoint: 'https://opendata.utah.gov/resource/y8j8-2fka.json',
+    endpoint: 'https://opendata.utah.gov/resource/fs8x-4x6x.json',
     method: 'GET',
     types: actionTypes.GET_LOCATION,
     type: actionTypes.GET_LOCATION[0],

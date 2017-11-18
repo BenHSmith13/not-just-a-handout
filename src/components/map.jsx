@@ -23,15 +23,19 @@ export class Map extends React.Component {
     if (this.mapElement && !this.map) {
       this.map = new google.maps.Map(this.mapElement, {
         zoom: 13,
-        center: {lat: 41.7418072, lng: -111.8111708},
+        center: {lat: 40.7608, lng: -111.8910},
         mapTypeId: 'satellite'
       });
-
-      this.heatmap = new google.maps.visualization.HeatmapLayer({
-        data: this.getPoints(),
-        map: this.map
-      });
     }
+  }
+  
+  componentDidUpdate() {
+    // if (!this.heatmap && !_.isEmpty(this.props.locations)) {
+    //   this.heatmap = new google.maps.visualization.HeatmapLayer({
+    //     data: this.getPoints(),
+    //     map: this.map
+    //   });
+    // }
   }
   
   toggleHeatmap() {
