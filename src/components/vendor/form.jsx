@@ -72,7 +72,7 @@ export class Form extends React.Component {
               <option value="Outreach Program">Outreach Program</option>
               <option value="Prepared Meals">Prepared Meals</option>
               <option value="Food Pantry">Food Pantry</option>
-              <option value="Clothing, Personal Care, and other Necessities">Clothing, Personal Care, and other Necessities</option>
+              <option value="Personal Care">Clothing, Personal Care, and other Necessities</option>
               <option value="Medical Resource">Medical Resource</option>
               <option value="Addiction Recovery Resource">Addiction Recovery Resource</option>
               <option value="Support Group">Support Group</option>
