@@ -34,7 +34,7 @@ export default class Involved extends React.Component {
     return (
       <div style={styles.main}>
         <div style={styles.overlay}></div>
-        <div>
+        <div style={styles.content}>
           <Header back={this.props.back} />
           <Map />
           <List />
