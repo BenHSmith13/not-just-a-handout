@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'lodash';
-import places from '../../consts/places'
 import { connect } from 'react-redux';
 
 function select(state) {
@@ -47,7 +46,11 @@ export class List extends React.Component {
       const styles = this.getStyles();
       const expanded = this.state.selected === _id;
       return (
-        <div style={{ ...styles.item, height: expanded ? '' : '30px'}} onClick={() => this.setState({ selected: _id })}>
+        <div
+          style={{ ...styles.item, height: expanded ? '' : '30px'}} 
+          onClick={() => this.setState({ selected: _id })}
+          key={`resourceList_${_id}`}
+        >
           <div style={styles.title}>{name}</div>
           <hr />
           {url ? <a href={url} target="__blank">{url}</a> : null}
