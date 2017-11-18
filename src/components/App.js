@@ -32,7 +32,7 @@ export class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.resources != this.props.resources && this.props.resources) {
+    if (prevProps.resources !== this.props.resources && this.props.resources) {
       _.forEach(this.props.resources, (resource) => {
         const { street, city, state, zip } = resource.address;
         const address = street + city + state + zip;

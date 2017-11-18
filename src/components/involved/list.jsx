@@ -51,10 +51,12 @@ export class List extends React.Component {
 
     return _.map(locations, (location) => {
       let city = location.city;
-      let link = location.type == 'food' ? foodLink : shelterLink;
-      return (<li>
-        <a href={`${link}?city=${city}&state=UT`} target='_blank'>{location.name}</a>
-      </li>)
+      let link = location.type === 'food' ? foodLink : shelterLink;
+      return (
+        <li>
+          <a href={`${link}?city=${city}&state=UT`} target='_blank'>{location.name}</a>
+        </li>
+      );
     })
   }
 

@@ -1,9 +1,7 @@
-import _ from 'lodash';
 import axios from 'axios';
 
 const api = store => next => action => {
   if (action.endpoint) {
-    const state = store.getState();
     if (action.method === 'GET') {
       axios.get(action.endpoint)
       .then(res => {

@@ -36,7 +36,7 @@ export class Map extends React.Component {
   putMarkersOnMap() {
     _.forEach(this.props.latLong, (ll, key) => {
       const res  = _.find(this.props.resources, resource => {
-        return resource._id == key;
+        return resource._id === key;
       });
       new google.maps.Marker({
         position: ll,

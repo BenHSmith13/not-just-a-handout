@@ -14,10 +14,6 @@ function select(state) {
 }
 
 export class Home extends React.Component {
-  constructor() {
-    super();
-  }
-  
   data01 = () => {
     const { stateHomeless } = this.props;
     return {
@@ -41,7 +37,7 @@ export class Home extends React.Component {
       ],
     };
   }
-  
+
   getStyles = () => {
     const sectionHeight = '400px';
     const statHeight = '460px';
@@ -61,7 +57,7 @@ export class Home extends React.Component {
         position: 'relative',
         padding: '5px',
       },
-      
+
       event: {
         height: sectionHeight,
         color: 'white',
@@ -94,21 +90,21 @@ export class Home extends React.Component {
         position: 'relative',
         padding: '5px',
       },
-      
+
     };
   }
-  
+
   render(){
     const styles = this.getStyles();
     return (
       <div>
         <Header />
-        
+
         <div style={styles.stats}>
           <h3>Homelessness in Utah</h3>
           <ReactHighcharts config={this.data01()}/>
         </div>
-        
+
         <div style={styles.involved} onClick={() => this.props.setRoute('involved')}>
           <div style={styles.eventSub}></div>
           <div style={styles.eventText}>
@@ -116,11 +112,11 @@ export class Home extends React.Component {
             Looking for an opportunity to serve the community? Look no further.
           </div>
         </div>
-        
+
         <div style={styles.stats}>
           <h3>More stats</h3>
         </div>
-        
+
         <div style={styles.event} onClick={() => this.props.setRoute('event')}>
           <div style={styles.eventSub}></div>
           <div style={styles.eventText}>
@@ -128,11 +124,11 @@ export class Home extends React.Component {
             Are giving out food, cutting hair, or providing jo training? Post your event here to get it in the hands of those who need it most.
           </div>
         </div>
-        
+
         <div style={styles.stats}>
           <h3>More stats</h3>
         </div>
-        
+
         <div style={styles.vendor} onClick={() => this.props.setRoute('vendor')}>
           <div style={styles.eventSub}></div>
           <div style={styles.eventText}>

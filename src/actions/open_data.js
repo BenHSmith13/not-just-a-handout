@@ -1,4 +1,3 @@
-
 export const actionTypes = {
   GET_HOMELESS: ['GET_HOMELESS', 'GET_HOMELESS_SUCCESS', 'GET_HOMELESS_FAILURE']
 }
