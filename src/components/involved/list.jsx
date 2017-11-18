@@ -4,11 +4,7 @@ import places from '../../consts/places'
 import { connect } from 'react-redux';
 
 function select(state) {
-  let locations = state.radius;
-  let cities = _.map(locations.zip_codes, lo => (lo.city))
   return {
-    locations,
-    cities,
     resources: state.resource
   }
 }
