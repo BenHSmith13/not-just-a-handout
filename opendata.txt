@@ -1,0 +1,38 @@
+opendata.utah.gov
+Drew Mingl - State Data Coordinator
+
+Gets all the data into the same place
+
+You can download any data you want in any format
+Open the Soda API, it will give you the endpoint you want
+
+You can also embed in an iFrame, be we aren't scrubs
+
+You can do a descent amount of unauthenticated requests
+If you need a token go ask the guy
+
+Ideas:
+  homeless people in hospitals
+  Crimes involving homeless
+  put a number in the bottom for numbers in the county
+  
+  HUD Section 8 Housing - Find section 8 housing near you
+  
+  The chronically homeless - they are the problem
+
+
+HUD - homeless program
+
+homeless - any person not living in a place fit for human habitation
+Chronicle homelessness
+They just have a lot of different definitions
+
+PiT - point in time data
+Everyone is required to do this count in January
+This is probably a gross underestimate of homelessness
+National alliance to solve homelessness
+US interagency on homlesness
+
+Housing first philosophy
+
+Where does she get this data?
