@@ -1,7 +1,20 @@
 import React from 'react';
 import _ from 'lodash';
+import places from '../consts/places'
+import { connect } from 'react-redux';
+import { getRadius } from '../actions/radius';
 
-export default class Involved extends React.Component {
+
+function select(state) {
+  let locations = state.radius;
+  let cities = _.map(locations.zip_codes, lo => (lo.city))
+  return {
+    locations,
+    cities,
+  }
+}
+
+export class Involved extends React.Component {
 
 
   getStyles() {
@@ -12,29 +25,22 @@ export default class Involved extends React.Component {
     }
   }
 
-  showLinks(foodLink, shelterLink) {
-    let locations = {
-      1 : {
-        city: 'Alta',
-        name: 'Alta Food Bank',
-        type: 'food',
-      },
-      2:{
-        city: 'Beaver',
-        name: 'Beaver Shelter',
-        type: 'shelter',
-      },
-      3:{
-        city: 'Delta',
-        name: 'Delta Food Bank',
-        type: 'food',
-      },
-      4:{
-        city: 'Blanding',
-        name: 'Blanding Shelter',
-        type: 'shelter',
-      },
-    }
+  componentDidMount() {
+    // TODO: make the endpoint actually take initial zip and radius size
+    const getNearByPlaces = 'https://www.zipcodeapi.com/rest/cFuSX0PfqZ57WKlJ76lu01cF9Ce1xap5o2gEvHjPhTMe2OyndbB3TUmC7Vve89Ox/radius.json/84103/15/miles'
+    this.props.getRadius(getNearByPlaces);
+  }
+
+  showLinks() {
+    const foodLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/cityfoodbanks.cgi'
+    const shelterLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi'
+    const nearPlaces = _.intersection(places, this.props.cities)
+    debugger
+    let locations = []
+     _.forEach(nearPlaces, (place) => {
+      locations.push({city: place, name: `${place} Shelter`, type: 'shelter'})
+      locations.push({city: place, name: `${place} Food Bank`, type: 'food'})
+    })
 
     return _.map(locations, (location) => {
       let city = location.city;
@@ -45,19 +51,20 @@ export default class Involved extends React.Component {
     })
   }
 
+
   render() {
     const styles = this.getStyles();
-    const foodLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/cityfoodbanks.cgi'
-    const shelterLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi'
     return (
       <div>
         <div style={styles.padleft}>
           <h2>How can I get involved?</h2>
           <ul>
-            {this.showLinks(foodLink, shelterLink)}
+            {this.showLinks()}
           </ul>
         </div>
       </div>
     );
   }
 }
+
+export default connect(select, { getRadius })(Involved);
