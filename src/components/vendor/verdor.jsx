@@ -25,7 +25,7 @@ export default class Vendor extends React.Component {
       }
     };
   }
-  
+
   render(){
     const styles = this.getStyles();
     return (
