@@ -39,6 +39,23 @@ export class List extends React.Component {
     this.props.getRadius(getNearByPlaces);
   }
 
+  showResources() {
+    return _.map(this.props.resources, res => {
+      const { name, address, details, phone, url } = res;
+      return (
+        <div>
+          <div>{name}</div>
+          <div><p>{address.street}</p><p>{address.city}</p><p>{address.zip}</p></div>
+          <div>{details}</div>
+          <div>{phone}</div>
+          {url ? <div>{url}</div> : null}
+          <br />
+          <p>----------------------------</p>
+        </div>
+      )
+    })
+  }
+
   showLinks() {
     const foodLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/cityfoodbanks.cgi'
     const shelterLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi'
@@ -67,9 +84,7 @@ export class List extends React.Component {
       <div>
         <div style={styles.padleft}>
           <h2>How can I get involved?</h2>
-          <ul>
-            {this.showLinks()}
-          </ul>
+          {this.showResources()}
         </div>
       </div>
     );
