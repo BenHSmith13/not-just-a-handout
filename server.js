@@ -32,4 +32,11 @@ app.get('/users', (req, res) => {
   });
 });
 
+app.post('/resources', (req, res) => {
+  MongoDatabase.createResource(req.body, (err, doc) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(doc));
+  });
+});
+
 app.listen('8000', () => console.log('server running on 8000'))
