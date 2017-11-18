@@ -2,7 +2,6 @@ import React from 'react';
 import _ from 'lodash';
 import places from '../../consts/places'
 import { connect } from 'react-redux';
-import { getRadius } from '../../actions/radius';
 
 function select(state) {
   let locations = state.radius;
@@ -15,7 +14,6 @@ function select(state) {
 }
 
 export class List extends React.Component {
-
 
   getStyles() {
     return {
@@ -62,4 +60,4 @@ export class List extends React.Component {
   }
 }
 
-export default connect(select, { getRadius })(List);
+export default connect(select)(List);
