@@ -10,6 +10,12 @@ function select(state) {
 }
 
 export class List extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      selected: null,
+    };
+  }
 
   getStyles() {
     return {
@@ -17,27 +23,40 @@ export class List extends React.Component {
         position: 'absolute',
         width: '40vw',
         right: '-5px',
-        top: '80px',
+        top: '95px',
         boxShadow: '-3px 5px 10px grey',
         borderRadius: '5px',
         backgroundColor: 'lightsteelblue',
-        height: '71vh',
+        height: '80vh',
+        overflow: 'scroll',
+      },
+      item: {
+        overflow: 'hidden',
+        backgroundColor: 'white',
+        margin: '3px 10px 0px 6px',
+        borderRadius: '3px',
+        textAlign: 'left',
+        padding: '5px',
       },
     }
   }
 
   showResources() {
     return _.map(this.props.resources, res => {
-      const { name, address, details, phone, url } = res;
+      const { name, address, details, phone, url, _id } = res;
+      const styles = this.getStyles();
+      const expanded = this.state.selected === _id;
       return (
-        <div>
-          <div>{name}</div>
-          <div><p>{address.street}</p><p>{address.city}</p><p>{address.zip}</p></div>
-          <div>{details}</div>
+        <div style={{ ...styles.item, height: expanded ? '' : '30px'}} onClick={() => this.setState({ selected: _id })}>
+          <div style={styles.title}>{name}</div>
+          <hr />
+          {url ? <a href={url} target="__blank">{url}</a> : null}
+          <div>
+            {address.street} <br/>
+            {address.city}, {address.zip}
+          </div>
           <div>{phone}</div>
-          {url ? <div>{url}</div> : null}
-          <br />
-          <p>----------------------------</p>
+          <div>{details}</div>
         </div>
       )
     })
