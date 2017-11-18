@@ -45,4 +45,11 @@ app.post('/resources', (req, res) => {
   });
 });
 
+app.get('/resources', (req, res) => {
+  MongoDatabase.getResources((err, doc) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(JSON.stringify(doc));
+  });
+})
+
 app.listen('8000', () => console.log('server running on 8000'))

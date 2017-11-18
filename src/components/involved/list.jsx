@@ -11,6 +11,7 @@ function select(state) {
   return {
     locations,
     cities,
+    resources: state.resource
   }
 }
 
