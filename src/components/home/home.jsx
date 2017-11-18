@@ -113,16 +113,10 @@ export class Home extends React.Component {
             Looking for an opportunity to serve the community? Look no further.
           </div>
         </div>
-
+        
         <div style={styles.stats}>
-        <h3>More stats</h3>
-          <h4>
-            Nationally, about 13 percent of the adult homeless
-            population is made up of veterans while only 7
-            percent of the national population has veteran status
-            (National Coalition for Homeless Veterans).
-          </h4>
-          <img src={vetPic} />
+          <h3>Homeless in your Area</h3>
+          <div><iframe width="700px" title="Homeless Headcount Salt Lake County 2011-2014" height="425px" src="https://opendata.utah.gov/w/7zgr-ceqa/u7hz-5yd9?cur=OOJiQmZqZ42&from=root" frameborder="0"scrolling="no"><a href="https://opendata.utah.gov/Social-Services/Homeless-Headcount-Salt-Lake-County-2011-2014/7zgr-ceqa" title="Homeless Headcount Salt Lake County 2011-2014" target="_blank">Homeless Headcount Salt Lake County 2011-2014</a></iframe><p><a href="http://www.socrata.com/" target="_blank">Powered by Socrata</a></p></div>
         </div>
 
         <div style={styles.event} onClick={() => this.props.setRoute('event')}>
@@ -134,7 +128,11 @@ export class Home extends React.Component {
         </div>
 
         <div style={styles.stats}>
-          <h3>More stats</h3>
+          Nationally, about 13 percent of the adult homeless
+          population is made up of veterans while only 7
+          percent of the national population has veteran status
+          (National Coalition for Homeless Veterans).
+          <div style={{ marginTop: '20px' }}><img src={vetPic} /></div>
         </div>
 
         <div style={styles.vendor} onClick={() => this.props.setRoute('vendor')}>
