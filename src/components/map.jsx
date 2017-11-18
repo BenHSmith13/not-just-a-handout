@@ -17,7 +17,7 @@ export class Map extends React.Component {
     this.map = null;
     this.heatmap = null;
   }
-  
+
   componentDidMount() {
     this.props.getLocations();
     if (this.mapElement && !this.map) {
@@ -28,7 +28,7 @@ export class Map extends React.Component {
       });
     }
   }
-  
+
   componentDidUpdate() {
     // if (!this.heatmap && !_.isEmpty(this.props.locations)) {
     //   this.heatmap = new google.maps.visualization.HeatmapLayer({
@@ -37,11 +37,11 @@ export class Map extends React.Component {
     //   });
     // }
   }
-  
+
   // toggleHeatmap() {
   //   this.heatmap.setMap(this.heatmap.getMap() ? null : this.map);
   // }
-  // 
+  //
   // changeGradient() {
   //   var gradient = [
   //     'rgba(0, 255, 255, 0)',
@@ -65,15 +65,14 @@ export class Map extends React.Component {
   // changeRadius() {
   //   this.heatmap.set('radius', this.heatmap.get('radius') ? null : 20);
   // }
-  // 
+  //
   // changeOpacity() {
   //   this.heatmap.set('opacity', this.heatmap.get('opacity') ? null : 0.2);
   // }
-
   // getPoints() {
   //   return _.map(this.props.locations, l => new google.maps.LatLng(l[1], l[0]));
   // }
-  
+
   getStyles = () => {
     return {
       map: {
@@ -82,7 +81,7 @@ export class Map extends React.Component {
       }
     }
   }
-  
+
   render() {
     const styles = this.getStyles();
     return (
