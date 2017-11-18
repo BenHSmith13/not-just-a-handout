@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as MongoActions from '../../actions/mongo';
 
-export class Form extends React.Component {
+export class EventForm extends React.Component {
   constructor() {
     super();
     
     this.state = {
       submitted: false,
-      type: '',
       name: '',
+      time: '',
       url: '',
       street: '',
       city: '',
@@ -22,9 +22,8 @@ export class Form extends React.Component {
   
   postData = () => {
     this.props.addResource({
-      type: this.state.type,
-      name: this.state.name,
-      url: this.state.url,
+      type: 'Event',
+      name: `${this.state.name}: ${this.state.time}`,
       address: {
         street: this.state.street,
         city: this.state.city,
@@ -39,7 +38,6 @@ export class Form extends React.Component {
       submitted: true,
       type: '',
       name: '',
-      url: '',
       street: '',
       city: '',
       state: '',
@@ -55,7 +53,7 @@ export class Form extends React.Component {
         width: '800px',
         margin: 'auto',
         textAlign: 'left',
-        padding: '10px',
+        padding: '20px',
       }
     }
   }
@@ -66,28 +64,6 @@ export class Form extends React.Component {
       <div style={styles.container}>
         {this.state.submitted ? <h3>Thank you!</h3> : null}
         <form>
-          <div class="form-group">
-            <label for="SelectType">Type</label>
-            <select className="form-control form-control-sm" id="SelectType" onChange={e => this.setState({ type: e.target.value })}>
-              <option value="Outreach Programs">Outreach Programs</option>
-              <option value="Prepared Meals">Prepared Meals</option>
-              <option value="Food Pantries">Food Pantries</option>
-              <option value="Clothing, Personal Care, and other Necessities">Clothing, Personal Care, and other Necessities</option>
-              <option value="Medical Resources">Medical Resources</option>
-              <option value="Addiction Recovery Resources">Addiction Recovery Resources</option>
-              <option value="Support Groups">Support Groups</option>
-              <option value="Education and Legal Services">Education and Legal Services</option>
-              <option value="Family Support Services">Family Support Services</option>
-              <option value="Housing Services">Housing Services</option>
-              <option value="Mental Health, Counseling, and Crisis Lines">Mental Health, Counseling, and Crisis Lines</option>
-              <option value="Employment Services">Employment Services</option>
-              <option value="Veteran Services">Veteran Services</option>
-              <option value="Resources for Children">Resources for Children</option>
-              <option value="Service Providers and Governmental Agencies">Service Providers and Governmental Agencies</option>
-              <option value="Miscellaneous">Miscellaneous</option>
-            </select>
-          </div>
-          
           <div className="form-group">
             <label for="InputName">Name</label>
             <input 
@@ -95,17 +71,17 @@ export class Form extends React.Component {
               type="text" 
               className="form-control form-control-sm" 
               id="InputName" 
-              placeholder="Company Name" 
+              placeholder="Ben Smith or Logan Youth Outreach" 
             />
           </div>
           <div className="form-group">
-            <label for="InputUrl">Website</label>
+            <label for="InputTime">Time</label>
             <input 
-              onChange={e => this.setState({ url: e.target.value })} 
+              onChange={e => this.setState({ time: e.target.value })} 
               type="text" 
               className="form-control form-control-sm" 
-              id="InputUrl" 
-              placeholder="example.com" 
+              id="InputTime" 
+              placeholder="Tue, Dec 17 from Noon to 7pm" 
             />
           </div>
           <div className="form-group">
@@ -171,4 +147,4 @@ export class Form extends React.Component {
   }
 }
 
-export default connect(() => ({}), MongoActions)(Form);
+export default connect(() => ({}), MongoActions)(EventForm);

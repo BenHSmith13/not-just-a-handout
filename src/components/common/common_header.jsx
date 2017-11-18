@@ -14,6 +14,9 @@ export default class CommonHeader extends React.Component {
         boxShadow: '5px 5px 3px grey',
         zIndex: '100',
       },
+      title: {
+        lineHeight: '90px',
+      },
       button: {
         cursor: 'pointer',
         float: 'left',
@@ -24,6 +27,7 @@ export default class CommonHeader extends React.Component {
       icon: {
         fontSize: '50px',
         padding: '8px',
+        lineHeight: '77px',
       }
     }
   }
@@ -35,8 +39,7 @@ export default class CommonHeader extends React.Component {
         <button style={styles.button} onClick={this.props.back}>
           <i className="material-icons" style={styles.icon}>arrow_back</i>
         </button>
-        <h1>Not Just a Handout</h1>
-        <h3>Get Involved</h3>
+        <h1 style={styles.title}>Not Just a Handout</h1>
       </div>
     );
   }

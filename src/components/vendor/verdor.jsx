@@ -8,7 +8,7 @@ export default class Vendor extends React.Component {
     return {
       main: {
         backgroundImage: `url(${food})`,
-        height: '100vh',
+        height: '100%',
         position: 'relative',
       },
       overlay: {
@@ -27,11 +27,12 @@ export default class Vendor extends React.Component {
   }
   
   render(){
+    const styles = this.getStyles();
     return (
       <div style={styles.main}>
         <div style={styles.overlay}></div>
         <div style={styles.content}>
-          <Header back={this.props.back} title="Get Involved" />
+          <Header back={this.props.back} />
           <Form />
         </div>
       </div>
