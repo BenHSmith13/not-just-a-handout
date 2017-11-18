@@ -1,5 +1,4 @@
 import React from 'react';
-import image from '../../assets/homeless.jpeg';
 
 export default class CommonHeader extends React.Component {
   getStyles() {
@@ -34,7 +33,7 @@ export default class CommonHeader extends React.Component {
     return (
       <div style={styles.header}>
         <button style={styles.button} onClick={this.props.back}>
-          <i class="material-icons" style={styles.icon}>arrow_back</i>
+          <i className="material-icons" style={styles.icon}>arrow_back</i>
         </button>
         <h1>Not Just a Handout</h1>
         <h3>Get Involved</h3>

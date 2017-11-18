@@ -27,7 +27,6 @@ export default class Vendor extends React.Component {
   }
   
   render(){
-    const styles = this.getStyles();
     return (
       <div style={styles.main}>
         <div style={styles.overlay}></div>
