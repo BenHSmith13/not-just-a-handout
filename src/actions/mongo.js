@@ -5,7 +5,7 @@ export const actionTypes = {
 
 export function addResource(res) {
   return {
-    endpoint: 'http://localhost:8000/resources',
+    endpoint: 'http://ec2-184-73-79-249.compute-1.amazonaws.com:8000/resources',
     method: 'POST',
     types: actionTypes.SET_RESOURCE,
     type: actionTypes.SET_RESOURCE[0],
@@ -15,7 +15,7 @@ export function addResource(res) {
 
 export function getResources() {
   return {
-    endpoint: 'http://localhost:8000/resources',
+    endpoint: 'http://ec2-184-73-79-249.compute-1.amazonaws.com:8000/resources',
     method: 'GET',
     types: actionTypes.GET_RESOURCES,
     type: actionTypes.GET_RESOURCES[0]
