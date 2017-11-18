@@ -6,6 +6,7 @@ import Header from './header';
 import hands from '../../assets/hands.jpeg';
 import people from '../../assets/people.jpeg';
 import food from '../../assets/food.jpeg';
+import vetPic from '../../assets/VeteranStat.jpeg';
 
 function select(state) {
   return {
@@ -114,7 +115,14 @@ export class Home extends React.Component {
         </div>
 
         <div style={styles.stats}>
-          <h3>More stats</h3>
+        <h3>More stats</h3>
+          <h4>
+            Nationally, about 13 percent of the adult homeless
+            population is made up of veterans while only 7
+            percent of the national population has veteran status
+            (National Coalition for Homeless Veterans).
+          </h4>
+          <img src={vetPic} />
         </div>
 
         <div style={styles.event} onClick={() => this.props.setRoute('event')}>
