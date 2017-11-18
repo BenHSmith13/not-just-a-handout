@@ -1,14 +1,16 @@
 import { combineReducers } from 'redux';
 import heatMapLocations from './heatMapLocations';
+import latLong from './latLong';
+import openData from './open_data';
 import radius from './radius';
 import resource from './resource';
-import openData from './open_data';
 
 const reducers = combineReducers({
   heatMapLocations,
+  latLong,
+  openData,
   radius,
   resource,
-  openData,
 });
 
 export default reducers;

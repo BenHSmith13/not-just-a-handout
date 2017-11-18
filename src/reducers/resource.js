@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { actionTypes as resourceActions } from '../actions/mongo';
 
 const initalState = {

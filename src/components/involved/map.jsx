@@ -3,10 +3,13 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import * as MapActions from '../../actions/heatMapLocations';
+import * as LatLongActions from '../../actions/latLong';
 
 function select(state) {
   return {
     locations: state.heatMapLocations,
+    resources: state.resource,
+    latLong: state.latLong
   }
 }
 
@@ -27,6 +30,12 @@ export class Map extends React.Component {
         mapTypeId: 'satellite'
       });
     }
+    _.forEach(this.props.resources, (resource) => {
+      const { street, city, state, zip } = resource.address;
+      const address = street + city + state + zip;
+      const add = `http://maps.google.com/maps/api/geocode/json?address=${address}`
+      this.props.getLatLong(add, resource);
+    })
   }
 
   componentDidUpdate() {
@@ -91,4 +100,4 @@ export class Map extends React.Component {
   }
 }
 
-export default connect(select, MapActions)(Map);
+export default connect(select, { ...MapActions, ...LatLongActions})(Map);

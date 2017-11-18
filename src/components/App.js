@@ -36,7 +36,7 @@ export class App extends Component {
     const location = { lat: position.coords.latitude, long: position.coords.longitude }
     this.setState({ location })
   }
-  
+
   route = () => {
     const { route } = this.state;
     if (route === 'home') {
