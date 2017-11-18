@@ -69,7 +69,6 @@ export class Map extends React.Component {
   // changeOpacity() {
   //   this.heatmap.set('opacity', this.heatmap.get('opacity') ? null : 0.2);
   // }
-
   // getPoints() {
   //   return _.map(this.props.locations, l => new google.maps.LatLng(l[1], l[0]));
   // }
