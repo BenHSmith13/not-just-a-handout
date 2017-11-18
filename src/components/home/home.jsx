@@ -25,7 +25,7 @@ export class Home extends React.Component {
       series: [
         {
           data: _.map(stateHomeless, h => _.toInteger(h.annualized_homess_person_count)),
-          name: 'Total Homless Persons',
+          name: 'Total Homeless Persons',
         },
         {
           data: _.map(stateHomeless, h => _.toInteger(h.number_of_homeless_persons_in_families)),
