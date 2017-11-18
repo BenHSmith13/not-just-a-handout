@@ -30,10 +30,16 @@ module.exports = class MongoDatabase {
       }).next(callback);
     });
   }
-  
+
   createResource(resource, callback = () => {}){
     MongoClient.connect(url, (err, db) => {
       db.collection('resources').insertOne(resource, callback);
+    });
+  }
+
+  getResources(callback) {
+    MongoClient.connect(url, (err, db) => {
+      db.collection('resources').find().toArray(callback);
     });
   }
 }
