@@ -36,8 +36,17 @@ export class List extends React.Component {
         borderRadius: '3px',
         textAlign: 'left',
         padding: '5px',
+        color: 'black',
       },
+      title: {
+        cursor: 'pointer',
+      }
     }
+  }
+  
+  toggleItem = (id) => {
+    const newId = this.state.selected === id ? null : id;
+    this.setState({ selected: newId });
   }
 
   showResources() {
@@ -48,7 +57,7 @@ export class List extends React.Component {
       return (
         <div
           style={{ ...styles.item, height: expanded ? '' : '30px'}} 
-          onClick={() => this.setState({ selected: _id })}
+          onClick={() => this.toggleItem(_id)}
           key={`resourceList_${_id}`}
         >
           <div style={styles.title}>{name}</div>
