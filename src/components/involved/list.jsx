@@ -1,8 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
-import places from '../consts/places'
+import places from '../../consts/places'
 import { connect } from 'react-redux';
-import { getRadius } from '../actions/radius';
+import { getRadius } from '../../actions/radius';
 
 
 function select(state) {
@@ -14,7 +14,7 @@ function select(state) {
   }
 }
 
-export class Involved extends React.Component {
+export class List extends React.Component {
 
 
   getStyles() {
@@ -66,4 +66,4 @@ export class Involved extends React.Component {
   }
 }
 
-export default connect(select, { getRadius })(Involved);
+export default connect(select, { getRadius })(List);
