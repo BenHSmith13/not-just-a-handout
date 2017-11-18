@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../assets/homeless.jpeg';
+import image from '../../assets/homeless.jpeg';
 
 export default class Header extends React.Component {
   getStyles() {

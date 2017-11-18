@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import Header from './header';
-import Map from './map';
+import Home from './home/home';
+import Involved from './involved/involved';
+import Organizer from './organizer/organizer';
+import Vendor from './vendor/verdor';
 import './App.css';
-import Involved from './involved';
-import Form from './form';
 
 class App extends Component {
 
   constructor() {
     super();
     this.state = {
-      location: {},
+      location: '',
+      route: 'home',
     };
   }
 
@@ -30,15 +31,28 @@ class App extends Component {
     const location = { lat: position.coords.latitude, long: position.coords.longitude }
     this.setState({ location })
   }
+  
+  route = () => {
+    const { route } = this.state;
+    if (route === 'home') {
+      return <Home setRoute={r => this.setState({ route: r })} />
+    }
+    if (route === 'involved') {
+      return <Involved back={() => this.setState({ route: 'home' })} />
+    }
+    if (route === 'vendor') {
+      return <Vendor back={() => this.setState({ route: 'home' })} />
+    }
+    if (route === 'organizer') {
+      return <Organizer back={() => this.setState({ route: 'home' })} />
+    }
+  }
 
   render() {
     this.getLocation();
     return (
       <div className="App" style={{ marginTop: '-21px' }}>
-        <Header />
-        <Map />
-        <Involved location={this.state.location} />
-        <Form />
+        {this.route()}
       </div>
     );
   }
