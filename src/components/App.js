@@ -66,7 +66,7 @@ export class App extends Component {
     if (route === 'vendor') {
       return <Vendor back={() => this.setState({ route: 'home' })} />
     }
-    if (route === 'organizer') {
+    if (route === 'event') {
       return <Organizer back={() => this.setState({ route: 'home' })} />
     }
   }

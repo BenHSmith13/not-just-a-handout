@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as MongoActions from '../actions/mongo';
+import * as MongoActions from '../../actions/mongo';
 
 export class Form extends React.Component {
   constructor() {
