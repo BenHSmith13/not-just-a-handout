@@ -78,6 +78,7 @@ export class Map extends React.Component {
       map: {
         height: '70vh',
         width: '70vh',
+        margin: '15px'
       }
     }
   }

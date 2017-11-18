@@ -1,21 +1,56 @@
+import _ from 'lodash';
 import React from 'react';
+import { connect } from 'react-redux';
+import ReactHighcharts from 'react-highcharts';
 import Header from './header';
 import hands from '../../assets/hands.jpeg';
 import people from '../../assets/people.jpeg';
 import food from '../../assets/food.jpeg';
 
-export default class Home extends React.Component {
+function select(state) {
+  return {
+    stateHomeless: state.openData.generalHomeless,
+  }
+}
+
+export class Home extends React.Component {
   constructor() {
     super();
   }
   
+  data01 = () => {
+    const { stateHomeless } = this.props;
+    return {
+      title: '',
+      xAxis: {
+        categories: _.map(stateHomeless, h => h.year),
+      },
+      series: [
+        {
+          data: _.map(stateHomeless, h => _.toInteger(h.annualized_homess_person_count)),
+          name: 'Total Homess Persons',
+        },
+        {
+          data: _.map(stateHomeless, h => _.toInteger(h.number_of_homeless_persons_in_families)),
+          name: 'Homeless Persons in Families',
+        },
+        {
+          data: _.map(stateHomeless, h => _.toInteger(h.number_of_chronically_homeless_persons)),
+          name: 'Chronically Homeless Persons',
+        },
+      ],
+    };
+  }
+  
   getStyles = () => {
-    const sectionHeight = '200px';
+    const sectionHeight = '400px';
+    const statHeight = '460px';
     return {
       stats: {
-        height: sectionHeight,
+        height: statHeight,
         backgroundColor: 'slateGrey',
         color: 'white',
+        padding: '5px',
       },
       involved: {
         height: sectionHeight,
@@ -23,6 +58,8 @@ export default class Home extends React.Component {
         cursor: 'pointer',
         backgroundImage: `url(${hands})`,
         backgroundPosition: 'center',
+        position: 'relative',
+        padding: '5px',
       },
       
       event: {
@@ -32,6 +69,7 @@ export default class Home extends React.Component {
         backgroundImage: `url(${people})`,
         backgroundAttachment: 'fixed',
         position: 'relative',
+        padding: '5px',
       },
       eventSub: {
         position: 'absolute',
@@ -40,9 +78,12 @@ export default class Home extends React.Component {
         backgroundColor: 'slateGrey',
         opacity: '0.5',
         zIndex: '3',
+        top: '0',
+        right: '0',
       },
       eventText: {
         zIndex: '5',
+        position: 'relative',
       },
       vendor: {
         height: sectionHeight,
@@ -51,6 +92,7 @@ export default class Home extends React.Component {
         backgroundImage: `url(${food})`,
         backgroundPosition: 'center',
         position: 'relative',
+        padding: '5px',
       },
       
     };
@@ -63,14 +105,16 @@ export default class Home extends React.Component {
         <Header />
         
         <div style={styles.stats}>
-          <h3>In your county there are X homeless individuals and families</h3>
-          // TODO: some stats graph based on your location
+          <h3>Homelessness in Utah</h3>
+          <ReactHighcharts config={this.data01()}/>
         </div>
         
         <div style={styles.involved} onClick={() => this.props.setRoute('involved')}>
           <div style={styles.eventSub}></div>
-          <h3>Get Involved</h3>
-          Looking for an opportunity to serve the community? Look no further.
+          <div style={styles.eventText}>
+            <h3>Get Involved</h3>
+            Looking for an opportunity to serve the community? Look no further.
+          </div>
         </div>
         
         <div style={styles.stats}>
@@ -91,11 +135,14 @@ export default class Home extends React.Component {
         
         <div style={styles.vendor} onClick={() => this.props.setRoute('vendor')}>
           <div style={styles.eventSub}></div>
-          <h3>Service Vendors</h3>
-          Do you run a shelter, food pantry, or other service? Add your service here.
+          <div style={styles.eventText}>
+            <h3>Service Vendors</h3>
+            Do you run a shelter, food pantry, or other service? Add your service here.
+          </div>
         </div>
-        
       </div>
     );
   }
 }
+
+export default connect(select, {})(Home);

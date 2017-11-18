@@ -21,7 +21,14 @@ export class List extends React.Component {
   getStyles() {
     return {
       padleft: {
-        paddingLeft: '80%',
+        position: 'absolute',
+        width: '40vw',
+        right: '-5px',
+        top: '80px',
+        boxShadow: '-3px 5px 10px grey',
+        borderRadius: '5px',
+        backgroundColor: 'lightsteelblue',
+        height: '71vh',
       },
     }
   }

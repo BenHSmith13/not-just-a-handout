@@ -6,6 +6,7 @@ import Organizer from './organizer/organizer';
 import Vendor from './vendor/verdor';
 import './App.css';
 import * as MongoActions from '../actions/mongo';
+import * as DataActions from '../actions/open_data';
 
 export class App extends Component {
 
@@ -20,6 +21,7 @@ export class App extends Component {
   componentDidMount() {
     this.getLocation();
     this.props.getResources();
+    this.props.getHomeless();
   }
 
   getLocation() {
@@ -61,4 +63,4 @@ export class App extends Component {
   }
 }
 
-export default connect(() => ({}), MongoActions)(App);
+export default connect(() => ({}), { ...MongoActions, ...DataActions })(App);

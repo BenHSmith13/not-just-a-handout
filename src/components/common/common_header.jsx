@@ -11,7 +11,9 @@ export default class CommonHeader extends React.Component {
         width: '100vw',
         color: 'white',
         lineHeight: headerHeight,
-        backgroundColor: 'slateGrey'
+        backgroundColor: 'slateGrey',
+        boxShadow: '5px 5px 3px grey',
+        zIndex: '100',
       },
       button: {
         cursor: 'pointer',
