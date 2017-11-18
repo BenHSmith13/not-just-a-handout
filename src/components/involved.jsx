@@ -11,6 +11,7 @@ function select(state) {
   return {
     locations,
     cities,
+    resources: state.resource
   }
 }
 
@@ -35,7 +36,7 @@ export class Involved extends React.Component {
     const foodLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/cityfoodbanks.cgi'
     const shelterLink = 'https://www.homelessshelterdirectory.org/cgi-bin/id/city.cgi'
     const nearPlaces = _.intersection(places, this.props.cities)
-    debugger
+    // debugger
     let locations = []
      _.forEach(nearPlaces, (place) => {
       locations.push({city: place, name: `${place} Shelter`, type: 'shelter'})

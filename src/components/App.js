@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Header from './header';
 import Map from './map';
 import './App.css';
 import Involved from './involved';
 import Form from './form';
+import * as MongoActions from '../actions/mongo';
 
-class App extends Component {
+export class App extends Component {
 
   constructor() {
     super();
@@ -16,6 +18,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getLocation();
+    this.props.getResources();
   }
 
   getLocation() {
@@ -44,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(() => ({}), MongoActions)(App);
