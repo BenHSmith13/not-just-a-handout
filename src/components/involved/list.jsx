@@ -1,6 +1,5 @@
 import React from 'react';
 import _ from 'lodash';
-import places from '../../consts/places'
 import { connect } from 'react-redux';
 
 function select(state) {
@@ -28,9 +27,9 @@ export class List extends React.Component {
 
   showResources() {
     return _.map(this.props.resources, res => {
-      const { name, address, details, phone, url } = res;
+      const { name, address, details, phone, url, type } = res;
       return (
-        <div>
+        <div key={`${name}_${phone}_${type}`}>
           <div>{name}</div>
           <div><p>{address.street}</p><p>{address.city}</p><p>{address.zip}</p></div>
           <div>{details}</div>
