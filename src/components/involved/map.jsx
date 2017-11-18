@@ -30,57 +30,21 @@ export class Map extends React.Component {
         mapTypeId: 'satellite'
       });
     }
-    _.forEach(this.props.resources, (resource) => {
-      const { street, city, state, zip } = resource.address;
-      const address = street + city + state + zip;
-      const add = `http://maps.google.com/maps/api/geocode/json?address=${address}`
-      this.props.getLatLong(add, resource);
+    this.putMarkersOnMap();
+  }
+
+  putMarkersOnMap() {
+    _.forEach(this.props.latLong, (ll, key) => {
+      const res  = _.find(this.props.resources, resource => {
+        return resource._id == key;
+      });
+      new google.maps.Marker({
+        position: ll,
+        map: this.map,
+        title: res.name
+      });
     })
   }
-
-  componentDidUpdate() {
-    // if (!this.heatmap && !_.isEmpty(this.props.locations)) {
-    //   this.heatmap = new google.maps.visualization.HeatmapLayer({
-    //     data: this.getPoints(),
-    //     map: this.map
-    //   });
-    // }
-  }
-
-  // toggleHeatmap() {
-  //   this.heatmap.setMap(this.heatmap.getMap() ? null : this.map);
-  // }
-  //
-  // changeGradient() {
-  //   var gradient = [
-  //     'rgba(0, 255, 255, 0)',
-  //     'rgba(0, 255, 255, 1)',
-  //     'rgba(0, 191, 255, 1)',
-  //     'rgba(0, 127, 255, 1)',
-  //     'rgba(0, 63, 255, 1)',
-  //     'rgba(0, 0, 255, 1)',
-  //     'rgba(0, 0, 223, 1)',
-  //     'rgba(0, 0, 191, 1)',
-  //     'rgba(0, 0, 159, 1)',
-  //     'rgba(0, 0, 127, 1)',
-  //     'rgba(63, 0, 91, 1)',
-  //     'rgba(127, 0, 63, 1)',
-  //     'rgba(191, 0, 31, 1)',
-  //     'rgba(255, 0, 0, 1)'
-  //   ]
-  //   this.heatmap.set('gradient', this.heatmap.get('gradient') ? null : gradient);
-  // }
-
-  // changeRadius() {
-  //   this.heatmap.set('radius', this.heatmap.get('radius') ? null : 20);
-  // }
-  //
-  // changeOpacity() {
-  //   this.heatmap.set('opacity', this.heatmap.get('opacity') ? null : 0.2);
-  // }
-  // getPoints() {
-  //   return _.map(this.props.locations, l => new google.maps.LatLng(l[1], l[0]));
-  // }
 
   getStyles = () => {
     return {

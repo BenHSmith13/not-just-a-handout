@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import Home from './home/home';
 import Involved from './involved/involved';
 import Organizer from './organizer/organizer';
@@ -7,6 +8,12 @@ import Vendor from './vendor/verdor';
 import './App.css';
 import * as MongoActions from '../actions/mongo';
 import * as DataActions from '../actions/open_data';
+import * as LatLongActions from '../actions/latLong';
+
+const select = state => ({
+    resources: state.resource,
+  }
+);
 
 export class App extends Component {
 
@@ -22,6 +29,17 @@ export class App extends Component {
     this.getLocation();
     this.props.getResources();
     this.props.getHomeless();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.resources != this.props.resources && this.props.resources) {
+      _.forEach(this.props.resources, (resource) => {
+        const { street, city, state, zip } = resource.address;
+        const address = street + city + state + zip;
+        const add = `http://maps.google.com/maps/api/geocode/json?address=${address}`
+        this.props.getLatLong(add, resource);
+      })
+    }
   }
 
   getLocation() {
@@ -63,4 +81,4 @@ export class App extends Component {
   }
 }
 
-export default connect(() => ({}), { ...MongoActions, ...DataActions })(App);
+export default connect(select, { ...MongoActions, ...DataActions, ...LatLongActions })(App);
