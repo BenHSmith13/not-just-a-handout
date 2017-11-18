@@ -12,9 +12,11 @@ export default class Header extends React.Component {
         top: 0,
         width: '100vw',
         color: 'white',
-        lineHeight: headerHeight,
         backgroundAttachment: 'fixed',
       },
+      text: {
+        lineHeight: headerHeight,
+      }
     }
   }
 
@@ -22,7 +24,7 @@ export default class Header extends React.Component {
     const styles = this.getStyles();
     return (
       <div style={styles.header}>
-        <h1>Not Just a Handout</h1>
+        <h1 style={styles.text}>Not Just a Handout</h1>
       </div>
     );
   }
