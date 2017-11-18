@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { actionTypes as radiusActions } from '../actions/radius';
 
 const initalState = {
@@ -11,7 +10,6 @@ const initalState = {
 export default function getRadius(state = initalState, action) {
   switch (action.type) {
     case radiusActions.GET_RADIUS[1]: {
-      debugger
       return state
     }
 

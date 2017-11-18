@@ -7,13 +7,11 @@ export default class Involved extends React.Component {
   constructor() {
     super();
   }
-  
+
   getStyles = () => {
-    return {
-      
-    };
+    return {};
   }
-  
+
   render(){
     const styles = this.getStyles();
     return (
